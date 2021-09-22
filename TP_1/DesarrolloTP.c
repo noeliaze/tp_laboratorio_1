@@ -9,51 +9,58 @@
 #include <stdlib.h>
 #include "Biblioteca.h"
 
-int Sumar(int A, int B);
-int Restar(int A, int B);
-int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos);
+int sumar(int A, int B);
+int restar(int A, int B);
+int multiplicar(int A, int B);
+int dividir(int A, int B);
+//int PedirNumero(char mensaje[]);
 
-int main(void){
+int main(void) {
 
+	setbuf(stdout, NULL);
+	int opcion;
+	int operandoA;
+	int operandoB;
 	int resultadoSuma;
 	int resultadoResta;
-	int primerNumero;
-	int segundoNumero;
-	int opcion;
-	int respuesta;
+	int resultadoMultiplicacion;
+	int resultadoDivision;
+	int resultadoFactorial;
 
+	do {
+		printf("Ingrese una opcion del menu:\n 1. Ingresar el primer operando.\n \n 2. Ingresar el segundo operando.\n \n 3. Calcular todas las operaciones.\n \n 4. Mostrar resultados.\n \n5. Salir.");
+		scanf("%d", &opcion);
 
-	do{
+		switch (opcion) {
 
-			respuesta = utn_getNumero(&opcion,"\Elija una opcion del menu: \n 1. Ingresar el primer numero \n 2. Ingresar el segundo numero \n 3.Mostrar operaciones \n 4. Mostrar resultados \n 5. Salir\n","Error, reingrese una opcion valida\n",1,5,2);
-			if(!respuesta)
-		{
-			switch(opcion)
-			{
+		case 1:
+			printf("Valor del primer operando: ");
+			scanf("%d", &operandoA);
+			break;
 
-				case 1:
-						printf("\nIngrese el primer numero: ");
-						scanf("%d", &primerNumero);
-						break;
+		case 2:
+			printf("Valor del segundo operando: ");
+			scanf("%d", &operandoB);
+			break;
 
-				case 2:
-						printf("\nIngrese el segundo numero: ");
-						scanf("%d", &segundoNumero);
-						break;
+		case 3:
+			resultadoSuma = sumar(operandoA, operandoB);
+			resultadoResta = restar(operandoA, operandoB);
+			resultadoMultiplicacion = multiplicar(operandoA, operandoB);
+			resultadoDivision = dividir(operandoA, operandoB);
 
-				case 3:
+			break;
 
-						resultadoSuma = Sumar(primerNumero, segundoNumero);
-						printf("\nEl resultado es: %d", resultadoSuma);
+		case 4:
+			printf("\nEl resultado de la suma es %d\n", resultadoSuma);
+			printf("\nEl resultado de la resta es %d\n", resultadoResta);
+			printf("\nEl resultado de la multiplicacion es %d\n", resultadoMultiplicacion);
+			printf("\nEl resultado de la division es %d\n", resultadoDivision);
 
-						resultadoResta = Restar(primerNumero, segundoNumero);
-						printf("\nEl resultado es: %d", resultadoResta);
-						break;
-			}
+			break;
 		}
-	}
+	} while (opcion != 5);
 
-	while(opcion != 5);
 	return EXIT_SUCCESS;
 }
 
