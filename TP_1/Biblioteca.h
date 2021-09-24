@@ -5,10 +5,13 @@
 #ifndef BIBLIOTECA_H_
 #define BIBLIOTECA_H_
 
-int sumar(int A, int B);
-int restar(int A, int B);
-int multiplicar(int A, int B);
-int dividir(int A, int B);
+float sumar(float A, float B);
+float restar(float A, float B);
+float multiplicar(float A, float B);
+float dividir(float A, float B);
+float factorialOperandoA(float A);
+float factorialOperandoA(float A);
+
 
 
 #endif /* BIBLIOTECA_H_ */
